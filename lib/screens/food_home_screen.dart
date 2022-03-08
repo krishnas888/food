@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food/screens/card_one_screen.dart';
 
 import '../widget/custom_theme.dart';
+import 'card_two_screen.dart';
 class FoodHomeScreen extends StatefulWidget {
   const FoodHomeScreen({Key? key}) : super(key: key);
 
@@ -13,8 +15,8 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
   int _selectIndex=0;
 
   static List<Widget>? pages=<Widget>[
-    Container(color: Colors.purple,),
-    Container(color: Colors.redAccent,),
+    const Card1(),
+    const Card2(),
     Container(color: Colors.red,),
   ];
 
