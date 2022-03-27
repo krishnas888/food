@@ -33,24 +33,34 @@ class Card2 extends StatelessWidget {
                 title: "veg salad",
                 imageProvider: AssetImage("assets/author/EM2.jpg",),
               ),
-              Stack(
-                children: <Widget>[
-                  Text(
-                    "Smoothies",
-                    style: FoodTheme.lightTextTheme.headline3,
-                  ),
-                  Positioned(
-                    child: Text(
-                      "Recipe",
-                      style: FoodTheme.lightTextTheme.headline3,
+              Expanded(
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      bottom: 10,
+                      left: 16,
+                      child: Text(
+                        "Smoothies",
+                        style: FoodTheme.lightTextTheme.headline3,
+                      ),
                     ),
-                    bottom: 10,
-                    right: 0,
-                  ),
-                ],
+                    Positioned(
+                      child: RotatedBox(
+                        quarterTurns: 3,
+                        child: Text(
+                          "Recipe",
+                          style: FoodTheme.lightTextTheme.headline3,
+                        ),
+                      ),
+                      bottom: 70,
+                      right: 16,
+                    ),
+                  ],
+                ),
               ),
             ],
-          ),),
+          ),
+      ),
     );
   }
 }

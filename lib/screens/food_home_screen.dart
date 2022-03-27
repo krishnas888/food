@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food/screens/card_one_screen.dart';
 
 import '../widget/custom_theme.dart';
+import 'card_three_screen.dart';
 import 'card_two_screen.dart';
 class FoodHomeScreen extends StatefulWidget {
   const FoodHomeScreen({Key? key}) : super(key: key);
@@ -17,10 +18,10 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
   static List<Widget>? pages=<Widget>[
     const Card1(),
     const Card2(),
-    Container(color: Colors.red,),
+    const Card3(),
   ];
 
-  void _onIeamTapped(int index){
+  void _onItemTapped(int index){
     setState(() {
       _selectIndex=index;
     });
@@ -39,7 +40,7 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor:Theme.of(context).textSelectionTheme.selectionColor,
         currentIndex: _selectIndex,
-        onTap: _onIeamTapped,
+        onTap: _onItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.card_giftcard),
               label: "Card"

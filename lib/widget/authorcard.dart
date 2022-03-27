@@ -18,6 +18,8 @@ class AuthorCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
         children: <Widget>[
           CircleImage(
             imageProvider: imageProvider,
@@ -27,6 +29,7 @@ class AuthorCard extends StatelessWidget {
             width: 8,
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
                 authorName,
@@ -38,6 +41,16 @@ class AuthorCard extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(width: 50,),
+          IconButton(
+            onPressed: () {
+             const snackBar = SnackBar(content: Text("Fovorate pressd"));
+             ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
+            icon: const Icon(Icons.favorite_border),
+            iconSize: 30,
+            color: Colors.grey[400],
+          )
         ],
       ),
     );
