@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food/widget/cirleimage.dart';
 import 'package:food/widget/custom_theme.dart';
 
-class AuthorCard extends StatelessWidget {
+class AuthorCard extends StatefulWidget {
   const AuthorCard(
       {Key? key,
       required this.authorName,
@@ -14,6 +14,12 @@ class AuthorCard extends StatelessWidget {
   final ImageProvider? imageProvider;
 
   @override
+  State<AuthorCard> createState() => _AuthorCardState();
+}
+
+class _AuthorCardState extends State<AuthorCard> {
+  bool _isFavorited = false;
+  @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -22,7 +28,7 @@ class AuthorCard extends StatelessWidget {
 
         children: <Widget>[
           CircleImage(
-            imageProvider: imageProvider,
+            imageProvider: widget.imageProvider,
             imageRadius: 28,
           ),
           const SizedBox(
@@ -32,11 +38,11 @@ class AuthorCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                authorName,
+                widget.authorName,
                 style: FoodTheme.lightTextTheme.headline2,
               ),
               Text(
-                title,
+                widget.title,
                 style: FoodTheme.lightTextTheme.headline3,
               ),
             ],
@@ -44,12 +50,14 @@ class AuthorCard extends StatelessWidget {
           const SizedBox(width: 50,),
           IconButton(
             onPressed: () {
-             const snackBar = SnackBar(content: Text("Fovorate pressd"));
-             ScaffoldMessenger.of(context).showSnackBar(snackBar);
+             setState(() {
+               _isFavorited = !_isFavorited;
+             });
             },
-            icon: const Icon(Icons.favorite_border),
+            icon: Icon(_isFavorited ? Icons.favorite :
+            Icons.favorite_border),
             iconSize: 30,
-            color: Colors.grey[400],
+            color: Colors.pink[400],
           )
         ],
       ),
